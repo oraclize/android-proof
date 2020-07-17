@@ -26,12 +26,12 @@ adb shell am start -n it.oraclize.androidproof/it.oraclize.androidproof.AndroidP
 We start the proof generation process
 
 ```bash
-adb shell am broadcast -a it.oraclize.intent.Proof --es url "https://httpbin.org/post" --es requestID  $(date +%s) --es method "POST" --es requestProperty "application/json" --es data '\{"\"jsonrpc"\":"\"2.0"\"\,"\"method"\":"\"generateIntegers"\"\,"\"params"\":1}' --es readTimeout "1000" --es connectTimeout "1000" --es timeoutBetweenRetries "1000" --es retriesMax "5" --es apiKey "$requestID"
+adb shell am broadcast -a it.oraclize.intent.Proof --es url "https://httpbin.org/get" --es requestID  $(date +%s) --es method "GET" --es requestProperty "application/json" --es data '\{"\"jsonrpc"\":"\"2.0"\"\,"\"method"\":"\"generateIntegers"\"\,"\"params"\":1}' --es readTimeout "1000" --es connectTimeout "1000" --es timeoutBetweenRetries "1000" --es retriesMax "5" --es apiKey "$requestID"
 ```
 
 We retrieve the proof from the device:
 ```bash
-adb pull /storage/emulated/0/Android/data/it.oraclize.androidproof/files/Documents/AndroiProof_$requestID.proof
+adb pull /storage/emulated/0/Android/data/it.oraclize.androidproof/files/Documents/AndroidProof_$requestID.proof
 ```
 
 We retrieve the certificate chain from the device:
